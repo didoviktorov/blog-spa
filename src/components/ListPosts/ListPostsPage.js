@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-export default class AllPosts extends Component {
+export default class ListPostsPage extends Component {
     render() {
         return (
             <div>
-                All Posts
+                List Posts
             </div>
         )
     }

@@ -1,7 +1,24 @@
 import React, {Component} from 'react';
 import RegisterForm from './RegisterForm';
+import {userRegister} from '../../models/user';
 
 export default class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: '',
+            repeat: ''
+        };
+
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    }
+
+    onSubmitHandler(event) {
+        event.preventDefault();
+        userRegister(this.state.username, this.state.password, this.state.repeat);
+    }
+
     render() {
         return (
             <div>
@@ -10,7 +27,7 @@ export default class Register extends Component {
                     RegisterForm
                     username={this.props.username}
                     password={this.props.password}
-                    repeat={this.props.repeat}
+                    onSubmit={this.onSubmitHandler}
                 />
             </div>
         )
