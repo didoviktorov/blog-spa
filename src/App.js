@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Header from './components/common/Header';
+import ListPosts from 'components/ListPosts/ListPostsPage';
+import CreatePost from 'components/CreatePost/CreatePostPage';
+import Login from 'components/Login/LoginPage';
+import About from './components/About/AboutPage';
+import Register from './components/Register/RegisterPage';
+import Home from './components/Home/HomePage';
+import {Link} from 'react-router';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <Header>
+                    <nav className="navbar navbar-inverse">
+                        <ul className="nav nav-tabs nav-justified">
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/listPosts">All Posts</Link></li>
+                            <li><Link to="/createPosts">Create Post</Link></li>
+                            <li><Link to="/register">Register</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                        </ul>
+                    </nav>
+                </Header>
+                {this.props.children}
+            </div>
+        );
+    }
 }
 
 export default App;
