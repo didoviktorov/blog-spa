@@ -24,7 +24,10 @@ function userLogout() {
 }
 
 function userLogin(username, password) {
-    alert("user" + username + ";" + "pass" + password )
+    KinveyRequester.login(username, password)
+        .then((userInfo) => {
+            saveSessesion(userInfo);
+        })
 }
 
 export {userRegister, userLogout, userLogin}
