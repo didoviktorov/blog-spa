@@ -3,7 +3,7 @@ import Header from './components/common/Header';
 import ListPosts from './components/ListPosts/ListPostsPage';
 import CreatePost from './components/CreatePost/CreatePostPage';
 import Login from './components/Login/LoginPage';
-import Logout from './components/Logout/LogoutPage';
+import logoutUser from './models/user';
 import About from './components/About/AboutPage';
 import Register from './components/Register/RegisterPage';
 import Home from './components/Home/HomePage';

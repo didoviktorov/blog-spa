@@ -21,6 +21,14 @@ let KinveyRequester = (function () {
         });
     }
 
+    function logout() {
+        return $.ajax({
+            method: "POST",
+            url: baseUrl + `user/${appId}/_logout`,
+            headers: authHeaders
+        });
+    }
+
     function register(username, password) {
         return $.ajax({
             method: "POST",
@@ -72,7 +80,8 @@ let KinveyRequester = (function () {
         loadPosts,
         createPost,
         findPostById,
-        editPost
+        editPost,
+        logout
     }
 })();
 

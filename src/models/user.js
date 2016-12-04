@@ -1,10 +1,9 @@
 import KinveyRequester from './KinveyRequester';
 
 function userRegister(username, password) {
-    alert('')
     KinveyRequester.register(username,password)
         .then((userInfo) => {
-            saveSessesion(userInfo)
+            saveSessesion(userInfo);
         });
 }
 
@@ -17,8 +16,11 @@ function saveSessesion(userInfo) {
     sessionStorage.setItem('username', username);
 }
 
-function logout() {
-    sessionStorage.clear();
+function userLogout() {
+    KinveyRequester.logout()
+        .then(() => {
+            sessionStorage.clear()
+    });
 }
 
-export {userRegister}
+export {userRegister, userLogout}
