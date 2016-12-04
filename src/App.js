@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 import ListPosts from './components/ListPosts/ListPostsPage';
 import CreatePost from './components/CreatePost/CreatePostPage';
 import Login from './components/Login/LoginPage';
@@ -27,6 +28,7 @@ class App extends Component {
                         </nav>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             )
         } else {
@@ -43,9 +45,11 @@ class App extends Component {
                         </nav>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             )
         }
+
     }
 }
 
