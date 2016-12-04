@@ -2,7 +2,7 @@ import KinveyRequester from './KinveyRequester';
 
 function userRegister(username, password) {
     KinveyRequester.register(username,password)
-        .then((userInfo) => {
+      .then((userInfo) => {
             saveSessesion(userInfo);
         });
 }
@@ -23,4 +23,8 @@ function userLogout() {
     });
 }
 
-export {userRegister, userLogout}
+function userLogin(username, password) {
+    alert("user" + username + ";" + "pass" + password )
+}
+
+export {userRegister, userLogout, userLogin}
