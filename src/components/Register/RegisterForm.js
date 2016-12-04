@@ -14,6 +14,7 @@ export default class RegisterForm extends Component {
                         name="username"
                         value={this.props.username}
                         onChange={this.props.onChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
@@ -25,6 +26,7 @@ export default class RegisterForm extends Component {
                         type="password" name="password"
                         value={this.props.password}
                         onChange={this.props.onChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
@@ -36,6 +38,7 @@ export default class RegisterForm extends Component {
                         type="password" name="repeat"
                         value={this.props.repeat}
                         onChange={this.props.onChange}
+                        required
                     />
                 </div>
                 <input type="submit" value="Register" className="btn btn-default"/>

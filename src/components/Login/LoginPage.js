@@ -7,15 +7,25 @@ export default class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: '',
+            password: ''
         };
 
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
     }
 
+    onChangeHandler(event) {
+        event.preventDefault();
+
+        let newStateValue = {};
+        newStateValue[event.target.name] = event.target.value;
+
+        this.setState(newStateValue);
+    }
+    
     onSubmitHandler(event) {
         event.preventDefault();
-        userLogin(this.state.username,this.state.password);
+        userLogin(this.state.username, this.state.password);
     }
 
     render() {
@@ -24,9 +34,10 @@ export default class Login extends Component {
                 <h1>Login</h1>
                 <
                     LoginForm
-                    username={this.props.username}
-                    password={this.props.password}
+                    username={this.state.username}
+                    password={this.state.password}
                     onSubmit={this.onSubmitHandler}
+                    onChange={this.onChangeHandler}
                 />
             </div>
         )
