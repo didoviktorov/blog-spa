@@ -10,11 +10,16 @@ import About from './components/About/AboutPage';
 import Register from './components/Register/RegisterPage';
 import Home from './components/Home/HomePage';
 
+function requireAuth(nextState, replaceState) {
+    if (!sessionStorage.getItem('username'))
+        replaceState('/login')
+}
+
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
-            <Route path="/listPosts" component={ListPosts}/>
+            <Route path="/listPosts" component={ListPosts} onEnter={requireAuth}/>
             <Route path="/createPosts" component={CreatePost}/>
             <Route path="register" component={Register} />
             <Route path="/login" component={Login} />

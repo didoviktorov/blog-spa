@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import RegisterForm from './RegisterForm';
 import {userRegister} from '../../models/user';
+import observer from '../../models/observer';
+import {IndexRoute, Router, Route, browserHistory} from 'react-router';
 
 export default class Register extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ export default class Register extends Component {
 
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onRegisterSuccess = this.onRegisterSuccess.bind(this);
     }
 
     onChangeHandler(event) {
@@ -27,7 +30,11 @@ export default class Register extends Component {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        userRegister(this.state.username, this.state.password, this.state.repeat);
+        userRegister(this.state.username, this.state.password, this.state.repeat, this.onRegisterSuccess);
+    }
+
+    onRegisterSuccess(result) {
+        observer.onSessionUpdate();
     }
 
     render() {

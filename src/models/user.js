@@ -1,10 +1,13 @@
 import KinveyRequester from './KinveyRequester';
+import observer from './observer';
 
 function userRegister(username, password) {
-    KinveyRequester.register(username,password)
-      .then((userInfo) => {
-            saveSessesion(userInfo);
-        });
+    KinveyRequester.register(username, password)
+        .then(registerSuccess);
+
+    function registerSuccess(userInfo) {
+        saveSessesion(userInfo);
+    }
 }
 
 function saveSessesion(userInfo) {
@@ -14,13 +17,15 @@ function saveSessesion(userInfo) {
     sessionStorage.setItem('userId', userId);
     let username = userInfo.username;
     sessionStorage.setItem('username', username);
+
+    observer.onSessionUpdate();
 }
 
 function userLogout() {
     KinveyRequester.logout()
         .then(() => {
             sessionStorage.clear()
-    });
+        });
 }
 
 function userLogin(username, password) {
