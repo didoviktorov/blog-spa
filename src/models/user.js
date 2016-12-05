@@ -7,7 +7,6 @@ function userRegister(username, password) {
 
     function registerSuccess(userInfo) {
         saveSessesion(userInfo);
-        
     }
 }
 
