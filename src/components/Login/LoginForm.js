@@ -4,7 +4,7 @@ import './Login.css';
 export default class LoginForm extends Component {
     render() {
         return (
-            <form onSubmit={this.props.onSubmit}>
+            <form onSubmit={this.props.onSubmitHandler}>
                 <div className="div-form">
                     <div className="form-group">
                         <label>
@@ -16,7 +16,8 @@ export default class LoginForm extends Component {
                             name="username"
                             required=""
                             value={this.props.username}
-                            onChange={this.props.onChange}
+                            onChange={this.props.onChangeHandler}
+                            disabled={this.props.submitDisabled}
                         />
                     </div>
                 </div>
@@ -29,11 +30,12 @@ export default class LoginForm extends Component {
                             className="form-control"
                             type="password" name="password"
                             value={this.props.password}
-                            onChange={this.props.onChange}
+                            onChange={this.props.onChangeHandler}
+                            disabled={this.props.submitDisabled}
                         />
                     </div>
                 </div>
-               <input type="submit" value="Login" className="btn btn-default"/>
+               <input type="submit" value="Login" className="btn btn-default" disabled={this.props.submitDisabled}/>
             </form>
         )
     }

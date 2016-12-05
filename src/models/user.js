@@ -1,15 +1,6 @@
 import KinveyRequester from './KinveyRequester';
 import observer from './observer';
 
-function userRegister(username, password) {
-    KinveyRequester.register(username, password)
-        .then(registerSuccess);
-
-    function registerSuccess(userInfo) {
-        saveSessesion(userInfo);
-    }
-}
-
 function saveSessesion(userInfo) {
     let userAuth = userInfo._kmd.authtoken;
     sessionStorage.setItem('authToken', userAuth);
@@ -21,6 +12,23 @@ function saveSessesion(userInfo) {
     observer.onSessionUpdate();
 }
 
+function userLogin(username, password, callback) {
+    KinveyRequester.login(username, password)
+        .then((userInfo) => {
+            saveSessesion(userInfo);
+            callback(true);
+        })
+}
+
+function userRegister(username, password) {
+    KinveyRequester.register(username, password)
+        .then(registerSuccess);
+
+    function registerSuccess(userInfo) {
+        saveSessesion(userInfo);
+    }
+}
+
 function userLogout() {
     KinveyRequester.logout()
         .then(() => {
@@ -28,11 +36,6 @@ function userLogout() {
         });
 }
 
-function userLogin(username, password) {
-    KinveyRequester.login(username, password)
-        .then((userInfo) => {
-            saveSessesion(userInfo);
-        })
-}
+
 
 export {userRegister, userLogout, userLogin}

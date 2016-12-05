@@ -5,13 +5,11 @@ import {userLogin} from '../../models/user';
 export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: ''
-        };
+        this.state = { username: '', password: '', submitDisabled: false };
 
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onSubmitResponse = this.onSubmitResponse.bind(this);
     }
 
     onChangeHandler(event) {
@@ -25,21 +23,35 @@ export default class Login extends Component {
     
     onSubmitHandler(event) {
         event.preventDefault();
-        userLogin(this.state.username, this.state.password);
+        userLogin(this.state.username, this.state.password, this.onSubmitResponse);
+    }
+
+    onSubmitResponse(response) {
+        if (response === true) {
+            // Navigate away from login page
+            this.context.router.push('/');
+        } else {
+            // Something went wrong, let the user try again
+            this.setState({ submitDisabled: true });
+        }
     }
 
     render() {
         return (
             <div>
                 <h1>Login</h1>
-                <
-                    LoginForm
+                <LoginForm
                     username={this.state.username}
                     password={this.state.password}
-                    onSubmit={this.onSubmitHandler}
-                    onChange={this.onChangeHandler}
+                    onChangeHandler={this.onChangeHandler}
+                    onSubmitHandler={this.onSubmitHandler}
+                    submitDisabled={this.state.submitDisabled}
                 />
             </div>
         )
     }
 }
+
+Login.contextTypes = {
+    router: React.PropTypes.object
+};

@@ -17,7 +17,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: null
+            username: ''
         };
 
         this.onSessionUpdate = this.onSessionUpdate.bind(this);
