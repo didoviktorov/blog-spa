@@ -20,7 +20,9 @@ export default class HomePage extends Component {
     }
 
     componentDidMount() {
-        loadAllPosts(this.onLoadSuccess);
+        if (sessionStorage.getItem('username')) {
+            loadAllPosts(this.onLoadSuccess);
+        }
     }
 
     render() {

@@ -14,7 +14,7 @@ export default class HomeForm extends Component {
             }
             for (let i = 0; i < 5; i++) {
                 return (
-                    <tr>
+                    <tr key={i}>
                         <td>{this.props.name}</td>
                         <td>{subContent}</td>
                         <td><Link to={"/post/" + this.props.id}>View more</Link></td>
