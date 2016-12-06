@@ -40,7 +40,7 @@ export default class PostsPage extends Component {
                         </thead>
                         <tbody>
                             {this.state.posts.map((e, i) => {
-                                return <ListPostsForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
+                                return <ListPostsForm key={i} author={e._acl.creator} name={e.Title} id={e._id} description={e.Content}/>;
                             })}
                         </tbody>
                     </table>

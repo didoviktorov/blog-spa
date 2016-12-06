@@ -11,14 +11,20 @@ export default class Post extends Component {
             subContent = this.props.description;
         }
 
+        let links = [<Link to={"/post/" + this.props.id}>View more</Link>];
+
+        if(this.props.author === sessionStorage.getItem('userId')) {
+            links = [<Link to={"/post/" + this.props.id}>View more</Link>, ' ', <Link to={"/post/delete/" + this.props.id}>Delete</Link>]
+        } else {
+            links = [<Link to={"/post/" + this.props.id}>View more</Link>];
+        }
+
         return (
             <tr>
                 <td>{this.props.name}</td>
                 <td>{subContent}</td>
                 <td>
-                    <Link to={"/post/" + this.props.id}>View more</Link>
-                    <br />
-                    <Link to={"/post/delete/" + this.props.id}>Delete</Link>
+                    {links}
                 </td>
             </tr>
         )
