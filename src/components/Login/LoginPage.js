@@ -30,9 +30,6 @@ export default class Login extends Component {
         if (response === true) {
             // Navigate away from login page
             this.context.router.push('/');
-        } else {
-            // Something went wrong, let the user try again
-            this.setState({ submitDisabled: true });
         }
     }
 
@@ -45,7 +42,6 @@ export default class Login extends Component {
                     password={this.state.password}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}
-                    submitDisabled={this.state.submitDisabled}
                 />
             </div>
         )

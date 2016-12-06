@@ -4,7 +4,7 @@ import './Register.css';
 export default class RegisterForm extends Component {
     render() {
         return (
-            <form onSubmit={this.props.onSubmit}>
+            <form onSubmit={this.props.onSubmitHandler}>
                 <div className="div-form">
                     <div className="form-group">
                         <label>
@@ -15,7 +15,7 @@ export default class RegisterForm extends Component {
                             type="text"
                             name="username"
                             value={this.props.username}
-                            onChange={this.props.onChange}
+                            onChange={this.props.onChangeHandler}
                             required
                         />
                     </div>
@@ -29,7 +29,7 @@ export default class RegisterForm extends Component {
                             className="form-control"
                             type="password" name="password"
                             value={this.props.password}
-                            onChange={this.props.onChange}
+                            onChange={this.props.onChangeHandler}
                             required
                         />
                     </div>
@@ -43,7 +43,7 @@ export default class RegisterForm extends Component {
                             className="form-control"
                             type="password" name="repeat"
                             value={this.props.repeat}
-                            onChange={this.props.onChange}
+                            onChange={this.props.onChangeHandler}
                             required
                         />
                     </div>

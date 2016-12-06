@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import RegisterForm from './RegisterForm';
 import {userRegister} from '../../models/user';
-import observer from '../../models/observer';
-import {IndexRoute, Router, Route, browserHistory} from 'react-router';
+// import observer from '../../models/observer';
+// import {IndexRoute, Router, Route, browserHistory} from 'react-router';
 
 export default class Register extends Component {
     constructor(props) {
@@ -15,40 +15,48 @@ export default class Register extends Component {
 
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.onRegisterSuccess = this.onRegisterSuccess.bind(this);
+        this.onSubmitResponse = this.onSubmitResponse.bind(this);
     }
 
     onChangeHandler(event) {
         event.preventDefault();
 
-        let newStateValue = {};
-        newStateValue[event.target.name] = event.target.value;
-
-        this.setState(newStateValue);
+        let newState = {};
+        newState[event.target.name] = event.target.value;
+        this.setState(newState);
     }
-
-
+    
     onSubmitHandler(event) {
         event.preventDefault();
-        userRegister(this.state.username, this.state.password, this.state.repeat, this.onRegisterSuccess);
+        if (this.state.password !== this.state.repeat) {
+            alert("Passwords don't match");
+            return;
+        }
+        userRegister(this.state.username, this.state.password, this.onSubmitResponse);
     }
 
-    onRegisterSuccess(result) {
-        observer.onSessionUpdate();
+    onSubmitResponse(result) {
+        if (result === true) {
+            // Navigate away from register page
+            this.context.router.push('/');
+        }
     }
 
     render() {
         return (
             <div>
                 <h1>Register</h1>
-                <
-                    RegisterForm
+                <RegisterForm
                     username={this.state.username}
                     password={this.state.password}
-                    onSubmit={this.onSubmitHandler}
-                    onChange={this.onChangeHandler}
+                    onChangeHandler={this.onChangeHandler}
+                    onSubmitHandler={this.onSubmitHandler}
                 />
             </div>
         )
     }
 }
+
+Register.contextTypes = {
+    router: React.PropTypes.object
+};

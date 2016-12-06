@@ -14,7 +14,7 @@ export default class LoginForm extends Component {
                             className="form-control"
                             type="text"
                             name="username"
-                            required=""
+                            required
                             value={this.props.username}
                             onChange={this.props.onChangeHandler}
                             disabled={this.props.submitDisabled}
@@ -30,6 +30,7 @@ export default class LoginForm extends Component {
                             className="form-control"
                             type="password" name="password"
                             value={this.props.password}
+                            required
                             onChange={this.props.onChangeHandler}
                             disabled={this.props.submitDisabled}
                         />
