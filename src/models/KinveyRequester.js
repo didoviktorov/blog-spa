@@ -73,25 +73,16 @@ let KinveyRequester = (function () {
         });
     }
 
-
-    //
-    // function findPostById(postId) {
-    //     return $.ajax({
-    //         method: "GET",
-    //         url: baseUrl + `appdata/${appId}/posts/${postId}`,
-    //         headers: authHeaders
-    //     });
-    // }
-    //
-    // function editPost(postId, title, content) {
-    //     return $.ajax({
-    //         method: "PUT",
-    //         url: baseUrl + `appdata/${appId}/posts/${postId}`,
-    //         headers: authHeaders,
-    //         data: JSON.stringify({title, content}),
-    //         contentType: "application/json"
-    //     });
-    // }
+    function editPost(postId, title, content, auth) {
+        let header = makeAuth(auth);
+        return $.ajax({
+            method: "PUT",
+            url: baseUrl + `appdata/${appId}/posts/${postId}`,
+            headers: header,
+            data: JSON.stringify({ Title: title, Content: content }),
+            contentType: "application/json"
+        });
+    }
 
     return {
         login,
@@ -99,8 +90,7 @@ let KinveyRequester = (function () {
         loadPosts,
         createPost,
         loadPost,
-        // findPostById,
-        // editPost,
+        editPost,
         logout
     }
 })();

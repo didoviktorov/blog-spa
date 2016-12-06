@@ -1,5 +1,4 @@
 import KinveyRequester from './KinveyRequester';
-import observer from './observer';
 
 function loadAllPosts(callback) {
     KinveyRequester.loadPosts('kinvey')
@@ -7,11 +6,15 @@ function loadAllPosts(callback) {
 }
 
 function loadPost(id, callback) {
-    let postData;
     KinveyRequester.loadPost('kinvey', id).then(callback);
+}
 
+function editPost(id, title, content, callback) {
+    KinveyRequester.editPost(id, title, content, 'kinvey')
+        .then(callback(true));
 }
 export {
     loadAllPosts,
-    loadPost
+    loadPost,
+    editPost
 }

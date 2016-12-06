@@ -1,13 +1,16 @@
 import React, {Component} from "react";
 import ViewPostForm from "./ViewPostForm";
 import {loadPost} from "../../models/posts";
-//import observer from '../../models/observer';
+import PostControls from './PostControls';
+
 
 export default class ViewPostPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            post: {}
+            post: {},
+            canEdit: false,
+            postId: this.props.routeParams.postId
         };
         this.bindEventHandlers();
     }
@@ -18,6 +21,9 @@ export default class ViewPostPage extends Component {
 
     onLoadSuccess(response) {
         this.setState({post: response});
+        if (response._acl.creator === sessionStorage.getItem('userId')) {
+            this.setState({canEdit: true});
+        }
     }
 
     componentDidMount() {
@@ -32,6 +38,9 @@ export default class ViewPostPage extends Component {
                 <div>
                     <ViewPostForm content={this.state.post.Content} title={this.state.post.Title}/>
                 </div>
+                <PostControls
+                    postId={this.state.postId}
+                    canEdit={this.state.canEdit}/>
             </div>
         );
     }
