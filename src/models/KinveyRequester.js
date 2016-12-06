@@ -64,6 +64,16 @@ let KinveyRequester = (function () {
             contentType: "application/json"
         });
     }
+    function loadPost(auth, id) {
+        let header = makeAuth(auth);
+        return $.ajax({
+            method: "GET",
+            url: baseUrl + `appdata/${appId}/posts/${id}`,
+            headers: header
+        });
+    }
+
+
     //
     // function findPostById(postId) {
     //     return $.ajax({
@@ -88,6 +98,7 @@ let KinveyRequester = (function () {
         register,
         loadPosts,
         createPost,
+        loadPost,
         // findPostById,
         // editPost,
         logout
