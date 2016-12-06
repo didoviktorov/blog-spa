@@ -5,8 +5,8 @@ function loadAllPosts(callback) {
         .then(callback);
 }
 
-function createPost(title, content, callback, auth) {
-    KinveyRequester.createPost(title, content, auth)
+function createPost(title, content, date, callback, auth) {
+    KinveyRequester.createPost(title, content, date, auth)
         .then(() => callback(true))
 }
 

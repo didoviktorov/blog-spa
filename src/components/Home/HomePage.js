@@ -39,7 +39,10 @@ export default class HomePage extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.posts.map((e, i) => {
+                        {this.state.posts.sort((a, b) => {
+                             a.date - b.date;
+                        })
+                            .map((e, i) => {
                             if(i < 5) {
                                 return <HomeForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
                             }

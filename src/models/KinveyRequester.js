@@ -54,13 +54,13 @@ let KinveyRequester = (function () {
         });
     }
 
-    function createPost(title, content, auth) {
+    function createPost(title, content, date, auth) {
         let header = makeAuth(auth);
         return $.ajax({
             method: "POST",
             url: baseUrl + `appdata/${appId}/posts`,
             headers: header,
-            data: JSON.stringify({Title:title, Content:content}),
+            data: JSON.stringify({Title:title, Content:content, date: date}),
             contentType: "application/json"
         });
     }

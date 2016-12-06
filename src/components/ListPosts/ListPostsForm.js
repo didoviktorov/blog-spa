@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 export default class Post extends Component {
-
     render() {
         let subContent = this.props.description;
 

@@ -9,7 +9,8 @@ export default class CreatePostPage extends Component {
         this.state = {
             title: '',
             content: '',
-            inputDisabled: true
+            inputDisabled: true,
+            date: ''
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -35,7 +36,7 @@ export default class CreatePostPage extends Component {
 
     onSubmitHandler(event){
         event.preventDefault();
-        createPost(this.state.title, this.state.content, this.onCreateSuccess, 'kinvey');
+        createPost(this.state.title, this.state.content, Date.now(), this.onCreateSuccess, 'kinvey');
     }
 
     onCreateSuccess(result) {
