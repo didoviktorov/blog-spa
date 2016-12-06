@@ -15,7 +15,11 @@ export default class Post extends Component {
             <tr>
                 <td>{this.props.name}</td>
                 <td>{subContent}</td>
-                <td><Link to={"/post/" + this.props.id}>View more</Link></td>
+                <td>
+                    <Link to={"/post/" + this.props.id}>View more</Link>
+                    <br />
+                    <Link to={"/post/delete/" + this.props.id}>Delete</Link>
+                </td>
             </tr>
         )
     }

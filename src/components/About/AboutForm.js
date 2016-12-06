@@ -18,7 +18,7 @@ export default class AboutForm extends Component {
                         Dido Viktorov
                     </li>
                     <li>
-                        Yohan Bogosyan
+                        Yohanes Bogosyan
                     </li>
                     <li>
                         Dimitar Dimitrov

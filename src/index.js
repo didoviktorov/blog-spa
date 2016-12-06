@@ -10,6 +10,7 @@ import About from './components/About/AboutPage';
 import Register from './components/Register/RegisterPage';
 import Home from './components/Home/HomePage';
 import ViewPost from './components/VeiwPost/ViewPostPage';
+import DeletePost from './components/Delete/DeletePost';
 
 function requireAuth(nextState, replaceState) {
     if (!sessionStorage.getItem('username'))
@@ -23,6 +24,7 @@ ReactDOM.render(
             <Route path="/listPosts" component={ListPosts} onEnter={requireAuth}/>
             <Route path="/createPosts" component={CreatePost}/>
             <Route path="/post/:postId" component={ViewPost}></Route>
+            <Route path="/post/delete/:postId" component={DeletePost}></Route>
             <Route path="register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="about" component={About} />

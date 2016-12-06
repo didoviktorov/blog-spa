@@ -64,6 +64,7 @@ let KinveyRequester = (function () {
             contentType: "application/json"
         });
     }
+
     function loadPost(auth, id) {
         let header = makeAuth(auth);
         return $.ajax({
@@ -72,6 +73,16 @@ let KinveyRequester = (function () {
             headers: header
         });
     }
+
+    function deletePost(auth, id) {
+        let header = makeAuth(auth);
+        return $.ajax({
+            method: "DELETE",
+            url: baseUrl + `appdata/${appId}/posts/${id}`,
+            headers: header
+        });
+    }
+
 
 
     //
@@ -101,6 +112,7 @@ let KinveyRequester = (function () {
         loadPost,
         // findPostById,
         // editPost,
+        deletePost,
         logout
     }
 })();
