@@ -6,7 +6,7 @@ export default class Post extends Component {
         return(
             <Link to={"/post/" + this.props.id}>
                 <span>Post title</span>
-                <div>{this.props.name}</div>
+                <h2>{this.props.name}</h2>
                 <span>Content</span>
                 <p>{this.props.description || 'No content'}</p>
             </Link>
