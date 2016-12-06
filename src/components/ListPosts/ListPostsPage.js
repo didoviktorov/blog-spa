@@ -27,13 +27,23 @@ export default class PostsPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Posts Page</h1>
-
-                <div>
-                    {this.state.posts.map((e, i) => {
-                        return <ListPostsForm key={i} name={e.Title} id={e._id} description={e.Content}/>
-                    })}
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.posts.map((e, i) => {
+                                return <ListPostsForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
