@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class ViewPostForm extends Component {
     render() {
         return (
-            <form>
+            <form className="container">
                 <div className="div-form">
                     <div className="form-group">
                         <label>
