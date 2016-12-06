@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CreatePostForm from './CreatePostForm';
 import {createPost} from '../../models/post';
-
+import {showInfo} from '../../utils/utils';
 export default class CreatePostPage extends Component {
     constructor(props) {
         super(props);
@@ -41,6 +41,7 @@ export default class CreatePostPage extends Component {
 
     onCreateSuccess(result) {
         if (result === true) {
+            showInfo('Post Was Successfully Created!');
             this.context.router.push('/listPosts');
         }
 

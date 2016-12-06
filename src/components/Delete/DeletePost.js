@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ListAllPosts from '../../components/ListPosts/ListPostsForm';
+//import ListAllPosts from '../../components/ListPosts/ListPostsForm';
 import {deletePost} from '../../models/post';
 
 export default class DeletePostClass extends Component {

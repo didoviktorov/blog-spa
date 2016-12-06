@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import HomeForm from './HomeForm';
 import {loadAllPosts} from '../../models/post';
-import {Link} from 'react-router';
+//import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
 export default class HomePage extends Component {
@@ -41,7 +41,7 @@ export default class HomePage extends Component {
                             </thead>
                             <tbody>
                             {this.state.posts.sort((a, b) => {
-                                a.date - b.date;
+                               return b.date - a.date;
                             })
                                 .map((e, i) => {
                                     if (i < 5) {
