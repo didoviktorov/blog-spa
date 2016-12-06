@@ -37,7 +37,6 @@ class App extends Component {
         if (!this.state.loggedIn) {
             return (
                 <div>
-                    <Header loggedIn={this.state.loggedIn} username={this.state.username}>
                         <nav className="navbar navbar-inverse">
                             <ul className="nav nav-tabs nav-justified">
                                 <li><Link to="/">Home</Link></li>
@@ -45,8 +44,9 @@ class App extends Component {
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to="/about">About</Link></li>
                             </ul>
+                            <Header loggedIn={this.state.loggedIn} username={this.state.username}>
+                            </Header>
                         </nav>
-                    </Header>
                     {this.props.children}
                     <Footer/>
                 </div>
@@ -54,7 +54,6 @@ class App extends Component {
         } else {
             return (
                 <div>
-                    <Header loggedIn={this.state.loggedIn} username={this.state.username}>
                         <nav className="navbar navbar-inverse">
                             <ul className="nav nav-tabs nav-justified">
                                 <li><Link to="/">Home</Link></li>
@@ -63,8 +62,9 @@ class App extends Component {
                                 <li><Link to="/about">About</Link></li>
                                 <li><Link to="/logout">Logout</Link></li>
                             </ul>
+                            <Header loggedIn={this.state.loggedIn} username={this.state.username}>
+                            </Header>
                         </nav>
-                    </Header>
                     {this.props.children}
                     <Footer/>
                 </div>

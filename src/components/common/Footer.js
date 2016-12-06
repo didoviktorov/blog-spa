@@ -5,7 +5,7 @@ export default class Footer extends Component {
     render() {
         return (
             <div className="footer-view">
-                (c) 2016 SPA Blog with ReactJS -SoftUni
+                (c) 2016 SPA Blog with ReactJS - SoftUni
             </div>
         )
     }

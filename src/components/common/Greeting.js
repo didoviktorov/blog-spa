@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './greeting.css';
 
 export default class Greeting extends Component {
     render() {
@@ -6,7 +7,7 @@ export default class Greeting extends Component {
             return null;
         } else {
             return (
-                <span>Welcome, {this.props.username}</span>
+                <span className="greeting">Welcome, {this.props.username}</span>
             );
         }
     }
