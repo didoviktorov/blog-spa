@@ -7,7 +7,7 @@ export default class Greeting extends Component {
             return null;
         } else {
             return (
-                <span className="greeting">Welcome, {this.props.username}</span>
+                <span className="greeting">Welcome, {this.props.username}!</span>
             );
         }
     }
