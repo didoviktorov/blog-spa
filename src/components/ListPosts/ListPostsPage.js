@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import ListPostsForm from './ListPostsForm';
 import {loadAllPosts} from '../../models/post';
-//import {Link} from 'react-router';
-//import observer from '../../models/observer';
 
 export default class PostsPage extends Component {
     constructor(props) {
