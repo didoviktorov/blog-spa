@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import EditForm from "./EditForm";
 import {loadPost, editPost} from "../../models/posts";
+import {showInfo} from '../../utils/utils';
 
 
 export default class EditPage extends Component {
@@ -46,7 +47,7 @@ export default class EditPage extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            // Navigate to all posts
+            showInfo('Post Edited Successfully!');
             this.context.router.push('/listPosts');
         }
     }

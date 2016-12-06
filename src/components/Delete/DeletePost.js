@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-//import ListAllPosts from '../../components/ListPosts/ListPostsForm';
+import {showInfo} from '../../utils/utils';
 import {deletePost} from '../../models/post';
 
 export default class DeletePostClass extends Component {
@@ -14,6 +14,7 @@ export default class DeletePostClass extends Component {
 
     deleteSuccess(resposnse) {
         if (resposnse === true) {
+            showInfo('Post Deleted Successfully!');
             this.context.router.push('/listPosts');
         }
     }
