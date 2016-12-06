@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-import ListPosts from './components/ListPosts/ListPostsPage';
-import CreatePost from './components/CreatePost/CreatePostPage';
-import Login from './components/Login/LoginPage';
-import logoutUser from './models/user';
-import About from './components/About/AboutPage';
-import Register from './components/Register/RegisterPage';
-import Home from './components/Home/HomePage';
-import Greeting from './components/common/Greeting';
+// import ListPosts from './components/ListPosts/ListPostsPage';
+// import CreatePost from './components/CreatePost/CreatePostPage';
+// import Login from './components/Login/LoginPage';
+// import logoutUser from './models/user';
+// import About from './components/About/AboutPage';
+// import Register from './components/Register/RegisterPage';
+// import Home from './components/Home/HomePage';
+//import Greeting from './components/common/Greeting';
 import observer from './models/observer'
 import {Link} from 'react-router';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -16,26 +16,28 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: ''
-        };
-
-        this.onSessionUpdate = this.onSessionUpdate.bind(this);
+        this.state = { loggedIn: false, username: '' };
+        observer.onSessionUpdate = this.onSessionUpdate.bind(this);
     }
 
     componentDidMount() {
-        observer.onSessionUpdate = this.onSessionUpdate;
+        this.onSessionUpdate();
     }
 
     onSessionUpdate() {
-        return sessionStorage.getItem('username');
+        let name = sessionStorage.getItem("username");
+        if (name) {
+            this.setState({ loggedIn: true, username: sessionStorage.getItem("username") });
+        } else {
+            this.setState({ loggedIn: false, username: '' });
+        }
     }
 
     render() {
-        if (!this.onSessionUpdate()) {
+        if (!this.state.loggedIn) {
             return (
                 <div>
-                    <Header>
+                    <Header loggedIn={this.state.loggedIn} username={this.state.username}>
                         <nav className="navbar navbar-inverse">
                             <ul className="nav nav-tabs nav-justified">
                                 <li><Link to="/">Home</Link></li>
@@ -52,8 +54,7 @@ class App extends Component {
         } else {
             return (
                 <div>
-                    <Header>
-                        <Greeting username={sessionStorage.getItem('username')}/>
+                    <Header loggedIn={this.state.loggedIn} username={this.state.username}>
                         <nav className="navbar navbar-inverse">
                             <ul className="nav nav-tabs nav-justified">
                                 <li><Link to="/">Home</Link></li>
