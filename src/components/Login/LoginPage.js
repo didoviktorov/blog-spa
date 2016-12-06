@@ -23,7 +23,7 @@ export default class Login extends Component {
     
     onSubmitHandler(event) {
         event.preventDefault();
-        userLogin(this.state.username, this.state.password, this.onSubmitResponse);
+        userLogin(this.state.username, this.state.password, this.onSubmitResponse, 'basic');
     }
 
     onSubmitResponse(response) {

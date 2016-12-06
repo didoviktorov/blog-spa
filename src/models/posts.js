@@ -2,7 +2,7 @@ import KinveyRequester from './KinveyRequester';
 import observer from './observer';
 
 function loadAllPosts(callback) {
-    KinveyRequester.loadPosts()
+    KinveyRequester.loadPosts('kinvey')
         .then(callback);
 }
 

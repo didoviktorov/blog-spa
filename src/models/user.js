@@ -12,16 +12,16 @@ function saveSession(userInfo) {
     observer.onSessionUpdate();
 }
 
-function userLogin(username, password, callback) {
-    KinveyRequester.login(username, password)
+function userLogin(username, password, callback, auth) {
+    KinveyRequester.login(username, password, auth)
         .then((userInfo) => {
             saveSession(userInfo);
             callback(true);
         })
 }
 
-function userRegister(username, password, callback) {
-    KinveyRequester.register(username, password)
+function userRegister(username, password, callback, auth) {
+    KinveyRequester.register(username, password, auth)
         .then(registerSuccess);
 
     function registerSuccess(userInfo) {
@@ -30,11 +30,16 @@ function userRegister(username, password, callback) {
     }
 }
 
-function userLogout() {
-    KinveyRequester.logout()
-        .then(() => {
-            sessionStorage.clear()
-        });
+function userLogout(callback) {
+    KinveyRequester.logout('kinvey')
+        .then(logoutSuccess);
+
+
+    function logoutSuccess(response) {
+        sessionStorage.clear();
+        observer.onSessionUpdate();
+        callback(true);
+    }
 }
 
 

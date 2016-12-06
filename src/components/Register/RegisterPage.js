@@ -32,7 +32,7 @@ export default class Register extends Component {
             alert("Passwords don't match");
             return;
         }
-        userRegister(this.state.username, this.state.password, this.onSubmitResponse);
+        userRegister(this.state.username, this.state.password, this.onSubmitResponse, 'basic');
     }
 
     onSubmitResponse(result) {
