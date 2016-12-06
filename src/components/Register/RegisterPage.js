@@ -44,7 +44,7 @@ export default class Register extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Register</h1>
                 <RegisterForm
                     username={this.state.username}

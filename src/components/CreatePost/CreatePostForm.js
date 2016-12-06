@@ -3,33 +3,44 @@ import React, {Component} from 'react';
 export default class CreatePostForm extends Component {
     render() {
         return (
-            <form onSubmit={this.props.onSubmitHandler}>
+            <form onSubmit={this.props.onSubmit}>
                 <div className="div-form">
                     <div className="form-group">
                         <label>
-                            <h3>Post title</h3>
+                            Name:
                         </label>
                         <input
                             className="form-control"
                             type="text"
                             name="title"
+                            value={this.props.title}
                             required
+                            onChange={this.props.onChange}
                         />
                     </div>
                 </div>
                 <div className="div-form">
                     <div className="form-group">
                         <label>
-                            <h3>Content</h3>
+                            Description:
                         </label>
-                        <textarea rows='20' cols='50'
+                        <textarea
+                            rows="20"
                             className="form-control"
-                            value={this.props.body}
+                            type="text"
+                            name="content"
                             required
+                            value={this.props.content}
+                            onChange={this.props.onChange}
                         />
                     </div>
                 </div>
-                <input type="submit" value="Login" className="btn btn-default" disabled={this.props.submitDisabled}/>
+                <input
+                    type="submit"
+                    value="Create Post"
+                    className="btn btn-default"
+                    disabled={this.props.inputDisabled}
+                />
             </form>
         )
     }

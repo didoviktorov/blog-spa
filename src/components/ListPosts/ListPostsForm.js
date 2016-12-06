@@ -2,12 +2,21 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 export default class Post extends Component {
+
     render() {
-        return(
-            <Link to={"/post/" + this.props.id}>
-                <h2 className="text-danger">{this.props.name}</h2>
-                <p>{this.props.description || 'No content'}</p>
-            </Link>
+        //let subContent = '';
+        //if(this.state.description.length > 25) {
+        //    subContent = this.props.description.substr(0, 25) + '...';
+        //} else {
+        //    subContent = this.props.description;
+        //}
+
+        return (
+            <tr>
+                <td>{this.props.name}</td>
+                <td>{this.props.description}</td>
+                <td><Link to={"/post/" + this.props.id}>View more</Link></td>
+            </tr>
         )
     }
 }
