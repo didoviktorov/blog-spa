@@ -37,10 +37,10 @@ export default class ViewPostPage extends Component {
 
                 <div>
                     <ViewPostForm content={this.state.post.Content} title={this.state.post.Title}/>
+                    <PostControls
+                        postId={this.state.postId}
+                        canEdit={this.state.canEdit}/>
                 </div>
-                <PostControls
-                    postId={this.state.postId}
-                    canEdit={this.state.canEdit}/>
             </div>
         );
     }
