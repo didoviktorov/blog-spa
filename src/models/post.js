@@ -10,4 +10,9 @@ function createPost(title, content, date, callback, auth) {
         .then(() => callback(true))
 }
 
-export {loadAllPosts, createPost}
+function deletePost(postId, callback) {
+    KinveyRequester.deletePost('kinvey', postId)
+        .then(() => callback(true));
+}
+
+export {loadAllPosts, createPost, deletePost}
