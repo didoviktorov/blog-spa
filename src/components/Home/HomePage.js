@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import HomeForm from './HomeForm';
 import {loadAllPosts} from '../../models/post';
-import {Link} from 'react-router';
-//import observer from '../../models/observer';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -41,12 +39,14 @@ export default class HomePage extends Component {
                             </thead>
                             <tbody>
                             {this.state.posts.sort((a, b) => {
-                                a.date - b.date;
+                                return a.date - b.date;
                             })
                                 .map((e, i) => {
                                     if (i < 5) {
-                                        return <HomeForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
+                                        return (<HomeForm key={i} name={e.Title} id={e._id} description={e.Content}/>);
                                     }
+                                    return null;
+
                                 })}
                             </tbody>
                         </table>
