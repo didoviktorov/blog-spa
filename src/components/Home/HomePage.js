@@ -26,31 +26,39 @@ export default class HomePage extends Component {
     }
 
     render() {
-        return (
-            <div className="container">
-                <h1>Latest posts</h1>
-                <div className="table-responsive">
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.posts.sort((a, b) => {
-                             a.date - b.date;
-                        })
-                            .map((e, i) => {
-                            if(i < 5) {
-                                return <HomeForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
-                            }
-                        })}
-                        </tbody>
-                    </table>
+        if (sessionStorage.getItem('username') != null) {
+            return (
+                <div className="container">
+                    <h1>Latest posts</h1>
+                    <div className="table-responsive">
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.state.posts.sort((a, b) => {
+                                a.date - b.date;
+                            })
+                                .map((e, i) => {
+                                    if (i < 5) {
+                                        return <HomeForm key={i} name={e.Title} id={e._id} description={e.Content}/>;
+                                    }
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div className="container">
+                    <HomeForm />
+                </div>
+            )
+        }
     }
 }
