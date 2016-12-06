@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ListPostsForm from './ListPostsForm';
-import {loadAllPosts} from '../../models/posts';
+import {loadAllPosts} from '../../models/post';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
