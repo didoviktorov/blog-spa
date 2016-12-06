@@ -84,6 +84,15 @@ let KinveyRequester = (function () {
         });
     }
 
+    function deletePost(auth, postId) {
+        let header = makeAuth(auth);
+        return $.ajax({
+            method: "DELETE",
+            url: baseUrl + `appdata/${appId}/posts/${postId}`,
+            headers: header,
+        });
+    }
+
     return {
         login,
         register,
@@ -91,7 +100,8 @@ let KinveyRequester = (function () {
         createPost,
         loadPost,
         editPost,
-        logout
+        logout,
+        deletePost
     }
 })();
 
