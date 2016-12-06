@@ -6,4 +6,12 @@ function loadAllPosts(callback) {
         .then(callback);
 }
 
-export {loadAllPosts}
+function loadPost(id, callback) {
+    let postData;
+    KinveyRequester.loadPost('kinvey', id).then(callback);
+
+}
+export {
+    loadAllPosts,
+    loadPost
+}

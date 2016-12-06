@@ -5,9 +5,7 @@ export default class Post extends Component {
     render() {
         return(
             <Link to={"/post/" + this.props.id}>
-                <span>Post title</span>
-                <h2>{this.props.name}</h2>
-                <span>Content</span>
+                <h2 className="text-danger">{this.props.name}</h2>
                 <p>{this.props.description || 'No content'}</p>
             </Link>
         )
