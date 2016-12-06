@@ -34,42 +34,45 @@ class App extends Component {
     }
 
     render() {
+        let navbar = {};
         if (!this.state.loggedIn) {
-            return (
+            navbar = (
                 <div>
-                        <nav className="navbar navbar-inverse">
-                            <ul className="nav nav-tabs nav-justified">
-                                <li><Link to="/">Home</Link></li>
-                                <li><Link to="/register">Register</Link></li>
-                                <li><Link to="/login">Login</Link></li>
-                                <li><Link to="/about">About</Link></li>
-                            </ul>
-                            <Header loggedIn={this.state.loggedIn} username={this.state.username}>
-                            </Header>
-                        </nav>
-                    {this.props.children}
-                    <Footer/>
+                    <nav className="navbar navbar-inverse">
+                        <ul className="nav nav-tabs nav-justified">
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/register">Register</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                        </ul>
+                    </nav>
                 </div>
             )
         } else {
-            return (
+            navbar = (
                 <div>
-                        <nav className="navbar navbar-inverse">
-                            <ul className="nav nav-tabs nav-justified">
-                                <li><Link to="/">Home</Link></li>
-                                <li><Link to="/listPosts">All Posts</Link></li>
-                                <li><Link to="/createPosts">Create Post</Link></li>
-                                <li><Link to="/about">About</Link></li>
-                                <li><Link to="/logout">Logout</Link></li>
-                            </ul>
-                            <Header loggedIn={this.state.loggedIn} username={this.state.username}>
-                            </Header>
-                        </nav>
-                    {this.props.children}
-                    <Footer/>
+                    <nav className="navbar navbar-inverse">
+                        <ul className="nav nav-tabs nav-justified">
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/listPosts">All Posts</Link></li>
+                            <li><Link to="/createPosts">Create Post</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                            <li><Link to="/logout">Logout</Link></li>
+                        </ul>
+                    </nav>
                 </div>
             )
         }
+
+        return (
+            <div>
+                <Header loggedIn={this.state.loggedIn} username={this.state.username}>
+                    {navbar}
+                </Header>
+                {this.props.children}
+                <Footer/>
+            </div>
+        )
 
     }
 }
