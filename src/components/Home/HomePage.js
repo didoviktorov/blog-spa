@@ -39,7 +39,7 @@ export default class HomePage extends Component {
                             </thead>
                             <tbody>
                             {this.state.posts.sort((a, b) => {
-                                return a.date - b.date;
+                                return b.date - a.date
                             })
                                 .map((e, i) => {
                                     if (i < 5) {
