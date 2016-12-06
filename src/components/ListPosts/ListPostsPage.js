@@ -28,7 +28,7 @@ export default class PostsPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Posts Page</h1>
                 <div className="table-responsive">
                     <table className="table">

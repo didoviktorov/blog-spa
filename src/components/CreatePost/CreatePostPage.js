@@ -47,7 +47,7 @@ export default class CreatePostPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Create New Post</h1>
                 <CreatePostForm
                     title={this.state.title}
